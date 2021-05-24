@@ -1,10 +1,12 @@
 package com.example.demo.controller;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,7 +17,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entities.Piloto;
+import com.example.demo.entities.Viaje;
 import com.example.demo.repository.PilotoRepository;
+import com.example.demo.repository.ViajeRepository;
 
 
 @RestController
@@ -23,7 +27,9 @@ import com.example.demo.repository.PilotoRepository;
 public class PilotoController {
 	
 	@Autowired
-	PilotoRepository repository;
+	private PilotoRepository repository;
+	@Autowired
+	private ViajeRepository ViajeRepository;
 	
 	//GET Piloto
 	@GetMapping
@@ -75,4 +81,10 @@ public class PilotoController {
 			}
 			return null;
 		}
+	@RequestMapping(value = "/{id}/viajes")
+	public ResponseEntity<List<Viaje>> getviaje(@PathVariable(name = "id" )long id){
+		List<Viaje> viaje =com.example.demo.repository.ViajeRepository.findByIdPiloto(id);
+		return ResponseEntity.ok(viaje);
 	}
+}
+

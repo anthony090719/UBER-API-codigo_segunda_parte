@@ -22,6 +22,10 @@ public class Viaje {
 	private String estado;
 	@Column(name = "monto")
 	private String monto;
+	@Column(name = "idCliente")
+	private Long idCliente;
+	@Column(name = "idPiloto")
+	private Long idPiloto;
 	public Long getId() {
 		return id;
 	}
@@ -51,5 +55,17 @@ public class Viaje {
 	}
 	public void setMonto(String monto) {
 		this.monto = monto;
+	}
+	public Long getIdCliente() {
+		return idCliente;
+	}
+	public void setIdCliente(Long idCliente) {
+		this.idCliente = idCliente;
+	}
+	public Long getIdPiloto() {
+		return idPiloto;
+	}
+	public void setIdPiloto(Long idPiloto) {
+		this.idPiloto = idPiloto;
 	}
 }

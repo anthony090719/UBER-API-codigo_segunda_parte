@@ -60,6 +60,7 @@ public class Piloto {
 	}
 	public void setMatricula(int matricula) {
 		this.matricula = matricula;
+
 	}
 }
 
